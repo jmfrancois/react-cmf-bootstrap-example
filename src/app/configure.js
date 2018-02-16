@@ -1,27 +1,24 @@
 import { api } from '@talend/react-cmf';
-import { registerAllContainers } from '@talend/react-containers/lib/register';
-import redirect from './actions/redirect';
-import { fetchDataSets } from './actions/dataset';
-import { fetchDataStores } from './actions/datastore';
+import React from 'react';
+import * as components from 'react-bootstrap';
+import mycomponents from './components';
+import wrap from './wrap';
+import expressions from './expressions';
 
-import App from './components/App.container';
-
-const registerComponent = api.route.registerComponent;
-const registerActionCreator = api.action.registerActionCreator;
 
 export default {
 	initialize() {
 		/**
 		 * Register components in CMF Components dictionary
 		 */
-		registerAllContainers();
-		registerComponent('App', App);
-
-		/**
-		 * Register action creators in CMF Actions dictionary
-		 */
-		registerActionCreator('dataset:fetchAll', fetchDataSets);
-		registerActionCreator('datastore:fetchAll', fetchDataStores);
-		registerActionCreator('redirect', redirect);
-	},
+		const connected = {};
+		Object.keys(components).forEach(key => {
+			// TODO: check displayName
+			connected[key] = wrap(components[key], key);
+		});
+		api.component.registerMany(connected);
+		api.component.registerMany(mycomponents);
+		api.component.register('p', ({ text }) => <p>text</p>);
+		api.expression.registerMany(expressions);
+	}
 };

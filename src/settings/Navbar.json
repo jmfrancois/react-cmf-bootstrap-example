@@ -1,0 +1,24 @@
+{
+  "props": {
+    "Navbar#main": {
+      "inverse": true,
+      "components": {
+        "children": [
+          { "component": "Nav", "componentId": "main" }
+        ]
+      }
+    },
+    "Nav#main": {
+      "components": {
+        "children": [
+          { "component": "NavItem", "componentId": "main-1" }
+        ]
+      }
+    },
+    "NavItem#main-1": {
+      "eventKey": 1,
+      "href": "http://www.google.com",
+      "text": "foo"
+    }
+  }
+}

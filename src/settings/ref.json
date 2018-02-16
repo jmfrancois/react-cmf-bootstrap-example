@@ -1,0 +1,14 @@
+{
+  "ref": {
+    "text-children": {
+      "components": {
+        "children": [{ "component": "p", "text": "hello" }]
+      }
+    },
+    "menu-item": {
+      "components": {
+        "children": [{ "component": "p", "text": "Link" }]
+      }
+    }
+  }
+}

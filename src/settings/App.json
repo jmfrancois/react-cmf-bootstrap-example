@@ -1,0 +1,95 @@
+{
+  "props": {
+    "App#default": {
+      "components": {
+        "children": [
+          { "component": "Navbar", "componentId": "main" },
+          { "component": "Grid", "componentId": "main" }
+        ]
+      }
+    },
+    "Grid#main": {
+      "container": true,
+      "components": {
+        "children": [
+          { "component": "Grid", "componentId": "row-intro" },
+          { "component": "Grid", "componentId": "row-registry" }
+        ]
+      }
+    },
+    "Grid#row-intro": {
+      "row": true,
+      "components": {
+        "children": [
+          { "component": "Grid", "componentId": "main-row-col-1" },
+          { "component": "Grid", "componentId": "main-row-col-2" }
+        ]
+      }
+    },
+    "Grid#main-row-col-1": {
+      "col": "col-md-5",
+      "components": {
+        "children": [
+          { "component": "Alert", "componentId": "my-alert" },
+          { "component": "Grid", "componentId": "intro" }
+        ]
+      }
+    },
+    "Grid#main-row-col-2": {
+      "col": "col-md-7",
+      "components": {
+        "children": [
+          { "component": "Grid", "componentId": "settings" }
+        ]
+      }
+    },
+    "Alert#my-alert": {
+      "bsStyle": "warning",
+      "text": "Warning you are designing a UI using JSON"
+    },
+    "Grid#intro": {
+      "text": [
+        "Using CMF you can describe the UI using a simple configuration",
+        "Here we are defining the grid"
+      ]
+    },
+    "Grid#settings": {
+      "style": {
+        "maxHeight": 100
+      },
+      "preExpression": {
+        "id": "getSettings",
+        "args": ["App#default"]
+      }
+    },
+    "Grid#row-registry": {
+      "row": true,
+      "components": {
+        "children": [
+          { "component": "Grid", "componentId": "row-registry-left" },
+          { "component": "Grid", "componentId": "row-registry-right" }
+        ]
+      }
+    },
+    "Grid#row-registry-left": {
+      "text": [
+        "To make it happens we use a registry which make the link btw",
+        "a string as key and function or component as a value",
+        "The keys are prefixed to not create conflict"
+      ]
+    },
+    "Grid#row-registry-right": {
+      "preExpression": {
+        "id": "getRegistry",
+        "args": ["route"]
+      }
+    },
+    "Button#test": {
+      "_ref": "text-children"
+    }
+  },
+  "routes": {
+    "path": "/",
+    "component": "App"
+  }
+}
