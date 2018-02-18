@@ -18,7 +18,6 @@ export default {
 		});
 		api.component.registerMany(connected);
 		api.component.registerMany(mycomponents);
-		api.component.register('p', ({ text }) => <p>text</p>);
 		api.expression.registerMany(expressions);
-	}
+	},
 };

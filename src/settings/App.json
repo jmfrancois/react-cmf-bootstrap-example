@@ -12,80 +12,67 @@
       "container": true,
       "components": {
         "children": [
-          { "component": "Grid", "componentId": "row-intro" },
-          { "component": "Grid", "componentId": "row-registry" }
+          { "component": "Row", "componentId": "intro" },
+          { "component": "Row", "componentId": "registry" }
         ]
       }
     },
-    "Grid#row-intro": {
-      "row": true,
+    "Row#intro": {
       "components": {
         "children": [
-          { "component": "Grid", "componentId": "main-row-col-1" },
-          { "component": "Grid", "componentId": "main-row-col-2" }
+          { "component": "Col", "componentId": "intro-left" },
+          { "component": "Col", "componentId": "intro-right" }
         ]
       }
     },
-    "Grid#main-row-col-1": {
-      "col": "col-md-5",
+    "Col#intro-left": {
+      "md": 5,
+      "text": [
+        "Using CMF you can describe the UI using a simple configuration",
+        "Here we are defining the grid"
+      ],
       "components": {
         "children": [
-          { "component": "Alert", "componentId": "my-alert" },
-          { "component": "Grid", "componentId": "intro" }
+          { "component": "Alert", "componentId": "my-alert" }
         ]
       }
     },
-    "Grid#main-row-col-2": {
-      "col": "col-md-7",
-      "components": {
-        "children": [
-          { "component": "Grid", "componentId": "settings" }
-        ]
+    "Col#intro-right": {
+      "md": 7,
+      "preExpression": {
+        "id": "getSettings",
+        "args": ["App#default"]
       }
     },
     "Alert#my-alert": {
       "bsStyle": "warning",
       "text": "Warning you are designing a UI using JSON"
     },
-    "Grid#intro": {
-      "text": [
-        "Using CMF you can describe the UI using a simple configuration",
-        "Here we are defining the grid"
-      ]
-    },
-    "Grid#settings": {
-      "style": {
-        "maxHeight": 100
-      },
-      "preExpression": {
-        "id": "getSettings",
-        "args": ["App#default"]
-      }
-    },
-    "Grid#row-registry": {
-      "row": true,
+    "Row#registry": {
       "components": {
         "children": [
-          { "component": "Grid", "componentId": "row-registry-left" },
-          { "component": "Grid", "componentId": "row-registry-right" }
+          { "component": "Col", "componentId": "registry-left" },
+          { "component": "Col", "componentId": "registry-right" }
         ]
       }
     },
-    "Grid#row-registry-left": {
+    "Col#registry-left": {
+      "md": 5,
       "text": [
         "To make it happens we use a registry which make the link btw",
         "a string as key and function or component as a value",
         "The keys are prefixed to not create conflict"
       ]
     },
-    "Grid#row-registry-right": {
+    "Col#registry-right": {
+      "md": 7,
       "preExpression": {
         "id": "getRegistry",
-        "args": ["route"]
+        "args": ["_.route.component"]
       }
     },
     "Button#test": {
-      "_ref": "text-children"
+      "text": "demo"
     }
   },
   "routes": {
