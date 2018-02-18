@@ -10,7 +10,15 @@ function App({ getComponent, components, ...props }) {
 	 * so that all icons are available in each view
 	 */
 	const injected = Inject.all(getComponent, components);
-	const newprops = Object.assign({}, omit(props, cmfConnect.INJECTED_PROPS));
+	const newprops = Object.assign({}, omit(props, [
+		'location',
+		'params',
+		'route',
+		'router',
+		'routeParams',
+		'routes',
+		...cmfConnect.INJECTED_PROPS,
+	]));
 	return (
 		<div {...newprops}>
 			{injected('children')}
