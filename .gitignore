@@ -40,3 +40,5 @@ hs_err_pid*
 
 # Talend web apps build directory
 build/
+
+src/assets/settings.json
