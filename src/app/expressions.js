@@ -2,8 +2,13 @@ import get from 'lodash/get';
 
 function getSettings({ context }, path) {
 	let settings = context.store.getState().cmf.settings;
+	if (!settings) {
+		return '';
+	}
 	if (path) {
 		settings = { props: { [path]: get(settings, `props.${path}`) }};
+	} else {
+		settings = { props: settings.props };
 	}
 	return JSON.stringify(settings, null, 2);
 }
