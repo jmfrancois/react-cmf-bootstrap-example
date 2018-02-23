@@ -12,37 +12,43 @@
       "container": true,
       "components": {
         "children": [
-          { "component": "Row", "componentId": "intro" },
-          { "component": "Row", "componentId": "registry" }
+          { "component": "Row", "componentId": "search" }
         ]
       }
     },
-    "Row#intro": {
+    "Row#search": {
       "components": {
         "children": [
-          { "component": "Col", "componentId": "intro-left" },
-          { "component": "Col", "componentId": "intro-right" }
+          { "component": "Col", "componentId": "left" },
+          { "component": "Col", "componentId": "content" }
         ]
       }
     },
-    "Col#intro-left": {
+    "Col#left": {
       "md": 5,
-      "text": [
-        "Using CMF you can describe the UI using a simple configuration",
-        "Here we are defining the grid"
-      ],
       "components": {
         "children": [
-          { "component": "Alert", "componentId": "my-alert" }
+          { "component": "HTMLTag", "view": "form#search-city" }
         ]
       }
     },
-    "Col#intro-right": {
-      "md": 7,
-      "preExpression": {
-        "id": "getSettings",
-        "args": ["App#default"]
+    "form#search-city": {
+      "tag": "form",
+      "components": {
+        "children": [
+          { "component": "FieldGroup", "componentId": "search-city" }
+        ]
       }
+    },
+    "FieldGroup#search-city": {
+      "id": "search-city",
+      "type": "text",
+      "label": "City",
+      "placeholder": "Search city"
+    },
+    "Col#content": {
+      "md": 7,
+      "preExpression": "getSettings"
     },
     "Alert#my-alert": {
       "bsStyle": "warning",
